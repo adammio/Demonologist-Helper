@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base target="_top">
+	<title>Evidence Select</title>
+	<script>
+		function updateResult() {
+			var selectedOptions = [];
+			var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+			for (var i = 0; i < checkboxes.length; i++) {
+				selectedOptions.push(parseInt(checkboxes[i].value));
+			}
+			google.script.run.withSuccessHandler(displayResult).processSelection({selectedOptions: selectedOptions, options: [1, 2, 3, 4, 5, 6, 7]});
+		}
+
+		function displayResult(result) {
+			document.getElementById("result").innerHTML = result;
+		}
+	</script>
+</head>
+<body>
+	<h1>Evidence Select</h1>
+	<table>
+		<tr>
+			<td><input type="checkbox" name="EMF Level 5" value="1" onchange="updateResult(1)">EMF Level 5</td>
+			<td><input type="checkbox" name="Fingerprint" value="2" onchange="updateResult(2)">Fingerprint</td>
+			<td><input type="checkbox" name="Easel Canvas Drawing" value="3" onchange="updateResult(3)">Easel Canvas Drawing</td>
+			<td><input type="checkbox" name="Freezing Temperature" value="4" onchange="updateResult(4)">Freezing Temperature</td>
+			<td><input type="checkbox" name="ESG Ghost Reaction" value="5" onchange="updateResult(5)">ESG Ghost Reaction</td>
+			<td><input type="checkbox" name="Ectroplasm Stains" value="6" onchange="updateResult(6)">Ectroplasm Stains</td>
+			<td><input type="checkbox" name="Spirit Box Response" value="7" onchange="updateResult(7)">Spirit Box Response</td>
+		</tr>
+	</table>
+	<div id="result"></div>
+</body>
+</html>
