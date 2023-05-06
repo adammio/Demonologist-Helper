@@ -1,35 +1,91 @@
-<div id="chart">
-  <img src="chart.png" alt="Chart">
-  <select id="option1">
-    <option value="">--Select Option 1--</option>
-    <option value="option1A">Option 1A</option>
-    <option value="option1B">Option 1B</option>
-    <option value="option1C">Option 1C</option>
-    <option value="option1D">Option 1D</option>
-    <option value="option1E">Option 1E</option>
-    <option value="option1F">Option 1F</option>
-    <option value="option1G">Option 1G</option>
-  </select>
-  <select id="option2">
-    <option value="">--Select Option 2--</option>
-    <option value="option2A">Option 2A</option>
-    <option value="option2B">Option 2B</option>
-    <option value="option2C">Option 2C</option>
-    <option value="option2D">Option 2D</option>
-    <option value="option2E">Option 2E</option>
-    <option value="option2F">Option 2F</option>
-    <option value="option2G">Option 2G</option>
-  </select>
-  <select id="option3">
-    <option value="">--Select Option 3--</option>
-    <option value="option3A">Option 3A</option>
-    <option value="option3B">Option 3B</option>
-    <option value="option3C">Option 3C</option>
-    <option value="option3D">Option 3D</option>
-    <option value="option3E">Option 3E</option>
-    <option value="option3F">Option 3F</option>
-    <option value="option3G">Option 3G</option>
-  </select>
-  <button onclick="getResult()">Get Result</button>
-  <p id="result"></p>
-</div>
+<body class="body">
+  <div class="navbar-logo-center wf-section">
+    <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-logo-center-container shadow-three w-nav">
+      <div class="container">
+        <div class="navbar-wrapper-three">
+          <a href="#" class="navbar-brand-three w-nav-brand"></a>
+          <nav role="navigation" class="nav-menu-wrapper-three w-nav-menu">
+            <div class="nav-menu-three">
+              <ul role="list" class="nav-menu-block w-list-unstyled">
+                <li>
+                  <a href="#" class="nav-link">Welcome</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-link">Ghost Types</a>
+                </li>
+                <li>
+                  <div data-hover="false" data-delay="0" class="nav-dropdown w-dropdown">
+                    <div class="nav-dropdown-toggle w-dropdown-toggle">
+                      <div class="nav-dropdown-icon w-icon-dropdown-toggle"></div>
+                      <div class="text-block">Other Areas</div>
+                    </div>
+                    <nav class="nav-dropdown-list shadow-three mobile-shadow-hide w-dropdown-list">
+                      <a href="#" class="nav-dropdown-link w-dropdown-link">Tips and Tricks</a>
+                      <a href="#" class="nav-dropdown-link w-dropdown-link">Evidence Table</a>
+                      <a href="#" class="nav-dropdown-link w-dropdown-link">Secret&#x27;s/Spoilers</a>
+                    </nav>
+                  </div>
+                </li>
+              </ul>
+              <ul role="list" class="nav-menu-block w-list-unstyled">
+                <li></li>
+                <li class="mobile-margin-top-10"></li>
+              </ul>
+            </div>
+          </nav>
+          <div class="menu-button w-nav-button">
+            <div class="w-icon-nav-menu"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="paragraph">Welcome to my Demonologist Helper aimed at providing people help, tips and tricks and the ability to learn which evidences finds each ghost, The game can be found at: <a href="https://store.steampowered.com/app/1929610/Demonologist/" target="_blank">Demonologist</a>
+    <a href="https://store.steampowered.com/app/1929610/Demonologist/"><br> <br></a>I would also like to give my thanks to two friends that have played a load of match&#x27;s with me and helped learn the game with also allowing me to get information for this from games <a href="https://www.twitch.tv/bepis" target="_blank">Bepis</a> And <a href="https://www.twitch.tv/bekiii_booo" target="_blank">Bekiii_Boo</a> clicking their names will take you to their twitch channels.
+  </p>
+  <div class="w-embed w-script">Sure, I can try to make a html code that allows you to select 3 options out of 7. Here is one possible way to do it using a <select multiple=""> tag:
+      ```html
+      <!--  Define the options and the results  -->
+      </select><select name="options" id="options" multiple="">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="G">G</option>
+      </select>
+      <!--  Define a button to submit the selected options  -->
+      <button id="submit">Submit</button>
+      <!--  Define a div to display the result  -->
+      <div id="result"></div>
+      <!--  Define a script to handle the logic  -->
+      <script>
+  // Get the elements by id
+  const options = document.getElementById("options");
+  const submit = document.getElementById("submit");
+  const result = document.getElementById("result");
+  // Define an object to store the results for each combination of 3 options
+  const results = {
+    "ABC": "Result 1",
+    "ABD": "Result 2",
+    "ABE": "Result 3",
+    // and so on for all possible combinations of 3 options
+  };
+  // Add an event listener to the submit button
+  submit.addEventListener("click", function() {
+    // Get the selected options as an array
+    const selected = Array.from(options.selectedOptions).map(option => option.value);
+    // Check if exactly 3 options are selected
+    if (selected.length === 3) {
+      // Sort the selected options to match the keys in results
+      const key = selected.sort().join("");
+      // Display the result based on the selected options
+      result.textContent = `You have selected ${key}`;
+      result.textContent += `\nThe result is ${results[key]}`;
+    } else {
+      // Display an error message
+      result.textContent = "Please select exactly 3 options";
+    }
+  });
+</script>
