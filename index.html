@@ -47,7 +47,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Demonologist Helper</title>
+<head>
+  <title>Options Selector</title>
+  <style>
+    .crossed-out {
+      text-decoration: line-through;
+      color: grey;
+    }
+  </style>
 </head>
 <body>
   <h1>Evidence Selector</h1>
@@ -89,12 +96,6 @@
   <script>
     const submit = document.getElementById("submit");
     const result = document.getElementById("result");
-    const results = {
-      "ABC": "Result 1",
-      "ABD": "Result 2",
-      "CEI": "Result 3",
-      // and so on for all possible combinations of 3 options
-    };
 
     submit.addEventListener("click", function() {
       const option1 = document.getElementById("options1").value;
@@ -102,13 +103,33 @@
       const option3 = document.getElementById("options3").value;
       const selected = [option1, option2, option3];
       const key = selected.sort().join("");
-      if (key in results) {
-        result.textContent = `You have selected ${key}`;
-        result.textContent += `\nThe result is ${results[key]}`;
+      if (key.includes("A")) {
+        // Cross out option A in the other two selections
+        document.getElementById("options2").querySelector(`option[value='A']`).classList.add("crossed-out");
+        document.getElementById("options3").querySelector(`option[value='A']`).classList.add("crossed-out");
       } else {
-        result.textContent = "Please select 3 options, one from each section";
+        // Remove the crossed-out styling from option A in the other two selections
+        document.getElementById("options2").querySelector(`option[value='A']`).classList.remove("crossed-out");
+        document.getElementById("options3").querySelector(`option[value='A']`).classList.remove("crossed-out");
+      }
+      if (key.includes("B")) {
+        // Cross out option A in the other two selections
+        document.getElementById("options2").querySelector(`option[value='B']`).classList.add("crossed-out");
+        document.getElementById("options3").querySelector(`option[value='B']`).classList.add("crossed-out");
+      } else {
+        // Remove the crossed-out styling from option A in the other two selections
+        document.getElementById("options2").querySelector(`option[value='B']`).classList.remove("crossed-out");
+        document.getElementById("options3").querySelector(`option[value='B']`).classList.remove("crossed-out");
+      }
+      if (key !== "AAA") {
+        if (key in results) {
+          result.textContent = `You have selected ${key}`;
+          result.textContent += `\nThe result is ${results[key]}`;
+        } else {
+          result.textContent = "Please select an option from each evidence";
+        }
+      } else {
+        result.textContent = "Please select at least one non-A option";
       }
     });
   </script>
-</body>
-</html>
