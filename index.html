@@ -47,89 +47,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-<head>
-  <title>Options Selector</title>
-  <style>
-    .crossed-out {
-      text-decoration: line-through;
-      color: grey;
-    }
-  </style>
+  <title>Demonologist Helper</title>
 </head>
 <body>
-  <h1>Evidence Selector</h1>
-  <label for="options1">Select an option for evidence 1:</label>
-  <select name="options1" id="options1">
-    <option value="A">A</option>
-    <option value="B">B</option>
-    <option value="C">C</option>
-    <option value="D">D</option>
-    <option value="E">E</option>
-    <option value="F">F</option>
-    <option value="G">G</option>
-  </select>
-  <br>
-  <label for="options2">Select an option for evidence 2:</label>
-  <select name="options2" id="options2">
-    <option value="A">A</option>
-    <option value="B">B</option>
-    <option value="C">C</option>
-    <option value="D">D</option>
-    <option value="E">E</option>
-    <option value="F">F</option>
-    <option value="G">G</option>
-  </select>
-  <br>
-  <label for="options3">Select an option for evidence 3:</label>
-  <select name="options3" id="options3">
-    <option value="A">A</option>
-    <option value="B">B</option>
-    <option value="C">C</option>
-    <option value="D">D</option>
-    <option value="E">E</option>
-    <option value="F">F</option>
-    <option value="G">G</option>
-  </select>
-  <br>
-  <button id="submit">Submit</button>
-  <div id="result"></div>
+  <h1>7 Options with 24 Results</h1>
+  <ul>
+    <li><a href="#">Option 1</a></li>
+    <li><a href="#">Option 2</a></li>
+    <li><a href="#">Option 3</a></li>
+    <li><a href="#">Option 4</a></li>
+    <li><a href="#">Option 5</a></li>
+    <li><a href="#">Option 6</a></li>
+    <li><a href="#">Option 7</a></li>
+  </ul>
+  <div id="results"></div>
   <script>
-    const submit = document.getElementById("submit");
-    const result = document.getElementById("result");
-
-    submit.addEventListener("click", function() {
-      const option1 = document.getElementById("options1").value;
-      const option2 = document.getElementById("options2").value;
-      const option3 = document.getElementById("options3").value;
-      const selected = [option1, option2, option3];
-      const key = selected.sort().join("");
-      if (key.includes("A")) {
-        // Cross out option A in the other two selections
-        document.getElementById("options2").querySelector(`option[value='A']`).classList.add("crossed-out");
-        document.getElementById("options3").querySelector(`option[value='A']`).classList.add("crossed-out");
-      } else {
-        // Remove the crossed-out styling from option A in the other two selections
-        document.getElementById("options2").querySelector(`option[value='A']`).classList.remove("crossed-out");
-        document.getElementById("options3").querySelector(`option[value='A']`).classList.remove("crossed-out");
-      }
-      if (key.includes("B")) {
-        // Cross out option A in the other two selections
-        document.getElementById("options2").querySelector(`option[value='B']`).classList.add("crossed-out");
-        document.getElementById("options3").querySelector(`option[value='B']`).classList.add("crossed-out");
-      } else {
-        // Remove the crossed-out styling from option A in the other two selections
-        document.getElementById("options2").querySelector(`option[value='B']`).classList.remove("crossed-out");
-        document.getElementById("options3").querySelector(`option[value='B']`).classList.remove("crossed-out");
-      }
-      if (key !== "AAA") {
-        if (key in results) {
-          result.textContent = `You have selected ${key}`;
-          result.textContent += `\nThe result is ${results[key]}`;
-        } else {
-          result.textContent = "Please select an option from each evidence";
+    function showResults() {
+      var options = document.querySelectorAll("ul li a");
+      var selectedOptions = [];
+      for (var i = 0; i < options.length; i++) {
+        if (options[i].classList.contains("selected")) {
+          selectedOptions.push(options[i].href);
         }
-      } else {
-        result.textContent = "Please select at least one non-A option";
       }
+      if (selectedOptions.length == 3) {
+        document.getElementById("results").innerHTML = selectedOptions.join(", ");
+      } else {
+        document.getElementById("results").innerHTML = "Please select 3 options.";
+      }
+    }
+    
+    options.forEach(function(option) {
+      option.addEventListener("click", showResults);
     });
   </script>
+</body>
+</html>
