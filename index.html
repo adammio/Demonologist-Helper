@@ -5,38 +5,6 @@
   <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
-  <h1>7 Options with 24 Results</h1>
-  <ul>
-    <li><a href="#">Option 1</a></li>
-    <li><a href="#">Option 2</a></li>
-    <li><a href="#">Option 3</a></li>
-    <li><a href="#">Option 4</a></li>
-    <li><a href="#">Option 5</a></li>
-    <li><a href="#">Option 6</a></li>
-    <li><a href="#">Option 7</a></li>
-  </ul>
-  <div id="results"></div>
-  <script>
-    function showResults() {
-      var options = document.querySelectorAll("ul li a");
-      var selectedOptions = [];
-      for (var i = 0; i < options.length; i++) {
-        if (options[i].classList.contains("selected")) {
-          selectedOptions.push(options[i].href);
-        }
-      }
-      if (selectedOptions.length == 3) {
-        document.getElementById("results").innerHTML = selectedOptions.join(", ");
-      } else {
-        document.getElementById("results").innerHTML = "Please select 3 options.";
-      }
-    }
-    
-    options.forEach(function(option) {
-      option.addEventListener("click", showResults);
-    });
-  </script>
-<body>
   <header>
     <nav>
       <ul>
@@ -57,11 +25,47 @@
         I would also like to give my thanks to two friends that have played a load of matches with me and helped learn the game with also allowing me to get information for this from games <a href="https://www.twitch.tv/bepis" target="_blank">Bepis</a> And <a href="https://www.twitch.tv/bekiii_booo" target="_blank">Bekiii_Boo</a> clicking their names will take you to their twitch channels.
       </p>
     </section>
-    
+    <section id="results">
+      <h2>Results</h2>
+      <p>7 Options with 24 Results</p>
+      <ul>
+        <li><a href="#">Option 1</a></li>
+        <li><a href="#">Option 2</a></li>
+        <li><a href="#">Option 3</a></li>
+        <li><a href="#">Option 4</a></li>
+        <li><a href="#">Option 5</a></li>
+        <li><a href="#">Option 6</a></li>
+        <li><a href="#">Option 7</a></li>
+      </ul>
+      <div id="results"></div>
+  
+    </section>
   </main>
   
 
-  <footer>Photo by <a href="https://unsplash.com/ja/@cnbrightskies?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Carlos Nunez</a> on <a href="https://unsplash.com/photos/la55DWqpt_s?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  </footer>
+  <p>Photo by <a href="https://unsplash.com/ja/@cnbrightskies?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Carlos Nunez</a> on <a href="https://unsplash.com/photos/la55DWqpt_s?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  </p>
 </body>
+<footer>
+  <script>
+    function showResults() {
+      var options = document.querySelectorAll("ul li a");
+      var selectedOptions = [];
+      for (var i = 0; i < options.length; i++) {
+        if (options[i].classList.contains("selected")) {
+          selectedOptions.push(options[i].href);
+        }
+      }
+      if (selectedOptions.length == 3) {
+        document.getElementById("results").innerHTML = selectedOptions.join(", ");
+      } else {
+        document.getElementById("results").innerHTML = "Please select 3 options.";
+      }
+    }
+    
+    options.forEach(function(option) {
+      option.addEventListener("click", showResults);
+    });
+  </script>
+</footer>
 </html>
